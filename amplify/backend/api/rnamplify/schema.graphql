@@ -1,6 +1,15 @@
-type Todo @model @auth(rules: [{allow: owner}]) {
+type TodoList @model @auth(rules: [{allow: owner}]) {
   id: ID!
   name: String!
   description: String
+  lastupdated: AWSDateTime!
+  todos: [Todo]
+}
+
+type Todo {
+  id: ID!
+  name: String!
+  description: String
+  lastupdated: AWSDateTime!
   priority: String
 }

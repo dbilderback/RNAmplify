@@ -1,39 +1,60 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateTodo = /* GraphQL */ `
-  subscription OnCreateTodo($owner: String!) {
-    onCreateTodo(owner: $owner) {
+export const onCreateTodoList = /* GraphQL */ `
+  subscription OnCreateTodoList($owner: String!) {
+    onCreateTodoList(owner: $owner) {
       id
       name
       description
-      priority
+      lastupdated
+      todos {
+        id
+        name
+        description
+        lastupdated
+        priority
+      }
       createdAt
       updatedAt
       owner
     }
   }
 `;
-export const onUpdateTodo = /* GraphQL */ `
-  subscription OnUpdateTodo($owner: String!) {
-    onUpdateTodo(owner: $owner) {
+export const onUpdateTodoList = /* GraphQL */ `
+  subscription OnUpdateTodoList($owner: String!) {
+    onUpdateTodoList(owner: $owner) {
       id
       name
       description
-      priority
+      lastupdated
+      todos {
+        id
+        name
+        description
+        lastupdated
+        priority
+      }
       createdAt
       updatedAt
       owner
     }
   }
 `;
-export const onDeleteTodo = /* GraphQL */ `
-  subscription OnDeleteTodo($owner: String!) {
-    onDeleteTodo(owner: $owner) {
+export const onDeleteTodoList = /* GraphQL */ `
+  subscription OnDeleteTodoList($owner: String!) {
+    onDeleteTodoList(owner: $owner) {
       id
       name
       description
-      priority
+      lastupdated
+      todos {
+        id
+        name
+        description
+        lastupdated
+        priority
+      }
       createdAt
       updatedAt
       owner

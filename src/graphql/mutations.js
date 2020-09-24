@@ -1,48 +1,69 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createTodo = /* GraphQL */ `
-  mutation CreateTodo(
-    $input: CreateTodoInput!
-    $condition: ModelTodoConditionInput
+export const createTodoList = /* GraphQL */ `
+  mutation CreateTodoList(
+    $input: CreateTodoListInput!
+    $condition: ModelTodoListConditionInput
   ) {
-    createTodo(input: $input, condition: $condition) {
+    createTodoList(input: $input, condition: $condition) {
       id
       name
       description
-      priority
+      lastupdated
+      todos {
+        id
+        name
+        description
+        lastupdated
+        priority
+      }
       createdAt
       updatedAt
       owner
     }
   }
 `;
-export const updateTodo = /* GraphQL */ `
-  mutation UpdateTodo(
-    $input: UpdateTodoInput!
-    $condition: ModelTodoConditionInput
+export const updateTodoList = /* GraphQL */ `
+  mutation UpdateTodoList(
+    $input: UpdateTodoListInput!
+    $condition: ModelTodoListConditionInput
   ) {
-    updateTodo(input: $input, condition: $condition) {
+    updateTodoList(input: $input, condition: $condition) {
       id
       name
       description
-      priority
+      lastupdated
+      todos {
+        id
+        name
+        description
+        lastupdated
+        priority
+      }
       createdAt
       updatedAt
       owner
     }
   }
 `;
-export const deleteTodo = /* GraphQL */ `
-  mutation DeleteTodo(
-    $input: DeleteTodoInput!
-    $condition: ModelTodoConditionInput
+export const deleteTodoList = /* GraphQL */ `
+  mutation DeleteTodoList(
+    $input: DeleteTodoListInput!
+    $condition: ModelTodoListConditionInput
   ) {
-    deleteTodo(input: $input, condition: $condition) {
+    deleteTodoList(input: $input, condition: $condition) {
       id
       name
       description
-      priority
+      lastupdated
+      todos {
+        id
+        name
+        description
+        lastupdated
+        priority
+      }
       createdAt
       updatedAt
       owner

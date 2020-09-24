@@ -4,39 +4,39 @@ import {View, Text, StyleSheet, TextInput, Button} from 'react-native';
 import Amplify, {API, graphqlOperation} from 'aws-amplify';
 import awsconfig from './aws-exports';
 import {withAuthenticator} from 'aws-amplify-react-native';
-import {createTodo} from './src/graphql/mutations';
-import {listTodos} from './src/graphql/queries';
+import {creatTodoList} from './src/graphql/mutations';
+import {listTodoLists} from './src/graphql/queries';
 
 const initialState = {name: '', description: ''};
 Amplify.configure(awsconfig);
 const App = () => {
   const [formState, setFormState] = useState(initialState);
-  const [todos, setTodos] = useState([]);
+  const [todoLists, setTodoLists] = useState([]);
 
   useEffect(() => {
-    fetchTodos();
+    fetchTodoLists();
   }, []);
 
   function setInput(key, value) {
     setFormState({...formState, [key]: value});
   }
 
-  async function fetchTodos() {
+  async function fetchTodoLists() {
     try {
-      const todoData = await API.graphql(graphqlOperation(listTodos));
-      const todos = todoData.data.listTodos.items;
-      setTodos(todos);
+      const todoListsData = await API.graphql(graphqlOperation(listTodoLists));
+      const newTodoLists = todoListsData.data.listTodoLists.items;
+      setTodoLists(newTodoLists);
     } catch (err) {
-      console.log('error fetching todos');
+      console.log('error fetching todoLists');
     }
   }
 
-  async function addTodo() {
+  async function addTodoList() {
     try {
-      const todo = {...formState};
-      setTodos([...todos, todo]);
+      const todoList = {...formState};
+      setTodoLists([...todoLists, todoList]);
       setFormState(initialState);
-      await API.graphql(graphqlOperation(createTodo, {input: todo}));
+      await API.graphql(graphqlOperation(creatTodoList, {input: todoList}));
     } catch (err) {
       console.log('error creating todo:', err);
     }
@@ -56,14 +56,8 @@ const App = () => {
         value={formState.description}
         placeholder="Description"
       />
-      <TextInput
-        onChangeText={(val) => setInput('priority', val)}
-        style={styles.input}
-        value={formState.priority}
-        placeholder="Priority"
-      />
-      <Button title="Create Todo" onPress={addTodo} />
-      {todos.map((todo, index) => (
+      <Button title="Create Todo" onPress={addTodoList} />
+      {todoLists.map((todo, index) => (
         <View key={todo.id ? todo.id : index} style={styles.todo}>
           <Text style={styles.todoName}>{todo.name}</Text>
           <Text>{todo.description}</Text>
