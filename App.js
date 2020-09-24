@@ -56,11 +56,11 @@ const App = () => {
         value={formState.description}
         placeholder="Description"
       />
-      <Button title="Create Todo" onPress={addTodoList} />
-      {todoLists.map((todo, index) => (
-        <View key={todo.id ? todo.id : index} style={styles.todo}>
-          <Text style={styles.todoName}>{todo.name}</Text>
-          <Text>{todo.description}</Text>
+      <Button title="Create Todo List" onPress={addTodoList} />
+      {todoLists.map((todoList, index) => (
+        <View key={todoList.id ? todoList.id : index} style={styles.todoList}>
+          <Text style={styles.todoListName}>{todoList.name}</Text>
+          <Text>{todoList.description}</Text>
         </View>
       ))}
     </View>
@@ -69,9 +69,9 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {flex: 1, justifyContent: 'center', padding: 20},
-  todo: {marginBottom: 15},
+  todoList: {marginBottom: 15},
   input: {height: 50, backgroundColor: '#ddd', marginBottom: 10, padding: 8},
-  todoName: {fontSize: 18},
+  todoListName: {fontSize: 18},
 });
 
 export default withAuthenticator(App);
